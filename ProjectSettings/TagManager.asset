@@ -7,11 +7,12 @@ TagManager:
   - Goal1
   - Goal2
   - Paddle
+  - Ball
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ball
   - Water
   - UI
   - 
