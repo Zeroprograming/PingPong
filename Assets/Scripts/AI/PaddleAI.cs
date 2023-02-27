@@ -21,7 +21,7 @@ using UnityEngine;
 
 public class PaddleAI : MonoBehaviour
 {
-    [SerializeField] private float speed = 7f;  // The speed at which the paddle moves
+    public float speed = 7.0f;  // The speed at which the paddle moves
     private float yBound = 3.75f;             // The upper and lower limits in the Y-axis for the paddle
     Vector2 paddlePose;                       // The current position of the paddle
     public GameObject ballPosition;           // The ball that will follow the paddle
@@ -52,6 +52,7 @@ public class PaddleAI : MonoBehaviour
         {
             rangeStatus = false;
         }
+
     }
 
     // If the ball is within the paddle's detection range, update paddlePose and set rangeStatus to true

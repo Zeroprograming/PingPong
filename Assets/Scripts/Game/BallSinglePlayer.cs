@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 
-public class Ball : MonoBehaviour
+public class BallSinglePlayer : MonoBehaviour
 {
     [SerializeField] private float initialVelocity = 4f;
     [SerializeField] private float velocityMultiplier = 1.1f;
@@ -35,14 +35,14 @@ public class Ball : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Goal1"))
         {
-            GameManager.Instance.Paddle2Scored();
-            GameManager.Instance.Restart();
+            GameManagerSinglePlayer.Instance.Paddle2Scored();
+            GameManagerSinglePlayer.Instance.Restart();
             Launch();
         }
-        else
+        if(collision.gameObject.CompareTag("Goal2"))
         {
-            GameManager.Instance.Paddle1Scored();
-            GameManager.Instance.Restart();
+            GameManagerSinglePlayer.Instance.Paddle1Scored();
+            GameManagerSinglePlayer.Instance.Restart();
             Launch();
         }
     }
