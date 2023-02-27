@@ -1,30 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Permissions;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class GameManager : NetworkBehaviour
+public class GameManagerSinglePlayer : MonoBehaviour
 {
+
+    [SerializeField] private TextMeshProUGUI paddle1ScoreText;
+    [SerializeField] private TextMeshProUGUI paddle2ScoreText;
 
     public Transform paddle1Transform;
     public Transform paddle2Transform;
     [SerializeField] private Transform ballTransform;
 
-    private static GameManager instance;
+    public PaddleAI paddleAI;
+    public int paddle1Score;
+    int paddle2Score;
 
-    public static GameManager Instance
+    private static GameManagerSinglePlayer instance;
+
+    public static GameManagerSinglePlayer Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<GameManager>();
+                instance = FindObjectOfType<GameManagerSinglePlayer>();
             }
             return instance;
         }
+    }
+
+    public void Paddle1Scored()
+    {
+        paddle1Score++;
+        paddleAI.speed += 1;
+        paddle1ScoreText.text = paddle1Score.ToString();
+    }
+
+    public void Paddle2Scored()
+    {
+        paddle2Score++;
+        paddle2ScoreText.text = paddle2Score.ToString();
     }
 
     public void Restart()
